@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "Letterboxd Match",
+  "version": "0.2.0",
+  "description": "Veja o quanto seus gostos de filmes combinam com os de outro usuário do Letterboxd.",
+  "permissions": ["storage"],
+  "host_permissions": ["https://letterboxd.com/*"],
+  "content_scripts": [
+    {
+      "matches": ["https://letterboxd.com/*"],
+      "js": ["logic.js", "content.js"],
+      "css": ["styles.css"],
+      "run_at": "document_idle"
+    }
+  ]
+}

@@ -1,0 +1,234 @@
+/* Todas as classes começam com "lbm-" para não esbarrar no CSS do site. */
+
+.lbm-botao,
+.lbm-caixa {
+  --lbm-fundo: #0e1116;
+  --lbm-cartao: #171b22;
+  --lbm-borda: #252c37;
+  --lbm-texto: #e8ecf1;
+  --lbm-apagado: #8b95a5;
+  --lbm-vermelho: #ff4757;
+  --lbm-verde: #34d17f;
+  --lbm-azul: #4da3ff;
+  --lbm-dourado: #ffc247;
+}
+
+/* ---------- Botão flutuante ---------- */
+.lbm-botao {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 99998;
+  padding: 11px 16px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--lbm-vermelho);
+  color: #fff;
+  font: 700 14px/1 system-ui, sans-serif;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+}
+.lbm-botao:hover { filter: brightness(1.1); }
+
+/* ---------- Painel lateral (gaveta à direita) ---------- */
+.lbm-caixa {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: min(400px, 100vw);
+  border-left: 1px solid var(--lbm-borda);
+  background: var(--lbm-fundo);
+  color: var(--lbm-texto);
+  font: 13px/1.4 system-ui, sans-serif;
+  box-shadow: -10px 0 40px rgba(0, 0, 0, 0.5);
+  transform: translateX(100%);
+  transition: transform 0.25s ease;
+}
+.lbm-caixa.lbm-aberta { transform: none; }
+.lbm-caixa * { box-sizing: border-box; }
+
+.lbm-cabecalho {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+}
+.lbm-marca { display: flex; align-items: center; gap: 6px; font-weight: 800; letter-spacing: 1px; }
+.lbm-ponto { width: 7px; height: 7px; border-radius: 50%; background: var(--lbm-azul); }
+.lbm-fechar {
+  border: 0;
+  background: none;
+  color: var(--lbm-apagado);
+  font-size: 16px;
+  cursor: pointer;
+}
+.lbm-fechar:hover { color: #fff; }
+
+.lbm-conteudo {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0 16px 20px;
+}
+.lbm-msg { margin: 30px 0; text-align: center; color: var(--lbm-texto); }
+
+/* ---------- Cartões em geral ---------- */
+.lbm-cartao {
+  margin-bottom: 10px;
+  padding: 12px;
+  border: 1px solid var(--lbm-borda);
+  border-radius: 12px;
+  background: var(--lbm-cartao);
+}
+
+/* ---------- Você × outra pessoa ---------- */
+.lbm-pessoas { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.lbm-pessoa { display: flex; align-items: center; gap: 8px; min-width: 0; flex: 1; }
+.lbm-avatar {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #2a3240;
+  color: #fff;
+  font-weight: 700;
+}
+.lbm-pessoa-textos { min-width: 0; }
+.lbm-pessoa-nome { overflow: hidden; color: #fff; font-weight: 700; text-overflow: ellipsis; white-space: nowrap; }
+.lbm-pessoa-sub { color: var(--lbm-apagado); font-size: 11px; }
+.lbm-troca {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  background: #222936;
+  color: var(--lbm-apagado);
+}
+
+/* ---------- Índice de compatibilidade ---------- */
+.lbm-indice { padding-bottom: 14px; text-align: center; }
+.lbm-rotulo { color: var(--lbm-apagado); font-size: 10px; font-weight: 600; letter-spacing: 1.5px; }
+
+.lbm-anel { position: relative; width: 150px; height: 150px; margin: 8px auto 0; }
+.lbm-anel svg { width: 100%; height: 100%; overflow: visible; }
+.lbm-anel-trilho { fill: none; stroke: #232a34; stroke-width: 9; }
+.lbm-anel-arco {
+  fill: none;
+  stroke: var(--lbm-vermelho);
+  stroke-width: 9;
+  stroke-linecap: round;
+  transition: stroke-dasharray 1s ease-out;
+}
+.lbm-anel-coracao {
+  fill: var(--lbm-vermelho);
+  stroke: var(--lbm-cartao);
+  stroke-width: 3px;
+  paint-order: stroke;
+  font-size: 17px;
+}
+.lbm-anel-numero {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 34px;
+  font-weight: 800;
+}
+
+.lbm-sintonia { margin-top: 4px; color: var(--lbm-vermelho); font-size: 15px; font-weight: 700; }
+.lbm-pequeno { margin-top: 2px; color: var(--lbm-apagado); font-size: 12px; }
+.lbm-aviso { margin-top: 6px; color: #ff9a3d; font-size: 11px; }
+
+/* ---------- Seções ---------- */
+.lbm-secao { margin-top: 18px; }
+.lbm-secao-topo { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+.lbm-secao-topo h3 { margin: 0; color: #fff; font-size: 14px; font-weight: 700; }
+.lbm-secao-nota { color: var(--lbm-apagado); font-size: 11px; }
+.lbm-vazio { margin: 6px 0; color: var(--lbm-apagado); font-style: italic; }
+
+/* ---------- Cartão de filme com pôster ---------- */
+.lbm-filmecard { display: flex; gap: 12px; }
+.lbm-poster {
+  flex-shrink: 0;
+  display: block;
+  width: 52px;
+  height: 78px;
+  overflow: hidden;
+  border-radius: 6px;
+  background: #232a34;
+}
+.lbm-poster img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.lbm-corpo { min-width: 0; flex: 1; }
+
+.lbm-titulo {
+  display: block;
+  overflow: hidden;
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.lbm-titulo:hover { color: var(--lbm-azul); }
+.lbm-sub { overflow: hidden; color: var(--lbm-apagado); font-size: 11px; text-overflow: ellipsis; white-space: nowrap; }
+.lbm-sub:empty { display: none; }
+
+.lbm-nota-linha {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4px;
+  color: var(--lbm-apagado);
+  font-size: 12px;
+}
+.lbm-nota-linha:first-of-type { margin-top: 8px; }
+.lbm-estrelas { color: var(--lbm-verde); letter-spacing: 1px; }
+
+/* ---------- Cartão de divergência ---------- */
+.lbm-diverge-topo { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; }
+.lbm-diverge-textos { min-width: 0; }
+.lbm-delta {
+  flex-shrink: 0;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: #1c2b45;
+  color: var(--lbm-azul);
+  font-size: 11px;
+  font-weight: 600;
+}
+.lbm-notaboxes { display: flex; gap: 8px; margin-top: 10px; }
+.lbm-notabox {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  min-width: 0;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: #11151b;
+  font-size: 12px;
+}
+.lbm-notabox-rotulo { overflow: hidden; color: var(--lbm-apagado); text-overflow: ellipsis; white-space: nowrap; }
+.lbm-notabox-valor { margin-left: 6px; color: var(--lbm-dourado); font-weight: 700; }
+
+/* ---------- Rodapé ---------- */
+.lbm-trocar {
+  display: block;
+  margin: 20px auto 0;
+  border: 0;
+  background: none;
+  color: #5d6877;
+  font-size: 11px;
+  text-decoration: underline;
+  cursor: pointer;
+}
